@@ -12,21 +12,9 @@ basic.showLeds(`
 basic.forever(function () {
     nextTime = input.runningTime() + lTime
     while (input.buttonIsPressed(Button.A) && input.runningTime() < nextTime) {
-        basic.showLeds(`
-            . . # . .
-            . # . # .
-            # . . . #
-            . # . # .
-            . . # . .
-            `)
+        led.unplot(2, 2)
         pins.analogPitch(38000, sTime)
-        basic.showLeds(`
-            . . . . .
-            . . # . .
-            . # . # .
-            . . # . .
-            . . . . .
-            `)
+        led.plot(2, 2)
         basic.pause(sTime)
     }
     basic.showLeds(`
