@@ -1,16 +1,17 @@
 let nextTime = 0
 pins.analogSetPitchPin(AnalogPin.P1)
 let sTime = 100
+let lTime = 1000
 basic.showLeds(`
-    . . . . .
-    . . . . .
+    . # . # .
+    # . . . #
     . . # . .
-    . . . . .
-    . . . . .
+    # . . . #
+    . # . # .
     `)
 basic.forever(function () {
-    if (input.buttonIsPressed(Button.A)) {
-        nextTime = input.runningTime() + 1000
+    nextTime = input.runningTime() + lTime
+    while (input.buttonIsPressed(Button.A) && input.runningTime() < nextTime) {
         basic.showLeds(`
             . . # . .
             . # . # .
@@ -26,16 +27,13 @@ basic.forever(function () {
             . . # . .
             . . . . .
             `)
-        basic.pause(500)
-        basic.showLeds(`
-            . . . . .
-            . . . . .
-            . . # . .
-            . . . . .
-            . . . . .
-            `)
-        while (input.buttonIsPressed(Button.A) || input.runningTime() < nextTime) {
-        	
-        }
+        basic.pause(sTime)
     }
+    basic.showLeds(`
+        . # . # .
+        # . . . #
+        . . # . .
+        # . . . #
+        . # . # .
+        `)
 })
