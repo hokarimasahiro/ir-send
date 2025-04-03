@@ -1,6 +1,6 @@
 let nextTime = 0
 pins.analogSetPitchPin(AnalogPin.P1)
-let sTime = 100
+let sTime = 50
 let lTime = 1000
 basic.showLeds(`
     . # . # .
